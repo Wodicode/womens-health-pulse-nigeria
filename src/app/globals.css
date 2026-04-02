@@ -1,17 +1,28 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f9fafb;
+  --background: #f8f7f5;
   --surface: #ffffff;
   --border: #e5e7eb;
   --border-light: #f3f4f6;
   --text-primary: #111827;
   --text-secondary: #6b7280;
   --text-muted: #9ca3af;
-  --accent-purple: #7c3aed;
-  --accent-rose: #e11d48;
-  --accent-purple-light: #ede9fe;
-  --accent-rose-light: #ffe4e6;
+
+  /* Brand colours from RenewHER */
+  --renewher-green: #1a4731;
+  --renewher-green-dark: #0d3425;
+  --renewher-green-mid: #2d6a4f;
+  --renewher-pink: #c8006e;
+  --renewher-pink-light: #fce7f3;
+  --renewher-pink-border: #f9a8d4;
+  --accent-amber: #d97706;
+
+  /* Tier colours */
+  --tier1-bg: #f0fdf4;
+  --tier1-border: #bbf7d0;
+  --urgent-bg: #fff1f2;
+  --urgent-border: #fecdd3;
 }
 
 @theme inline {
@@ -45,3 +56,54 @@ html, body {
   stroke: #f3f4f6 !important;
 }
 .recharts-text { fill: #9ca3af !important; font-size: 11px !important; }
+
+/* Hero card — Tier 1 */
+.hero-card {
+  background: linear-gradient(135deg, #0d3425 0%, #1a4731 45%, #2d6a4f 100%);
+  border-radius: 1.5rem;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+.hero-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 75% 0%, rgba(200, 0, 110, 0.3) 0%, transparent 55%);
+  pointer-events: none;
+}
+
+/* Urgent panel */
+.urgent-panel {
+  background: linear-gradient(135deg, #fff1f2, #fdf2f8);
+  border: 1.5px solid #fecdd3;
+  border-radius: 1rem;
+}
+
+/* Card hover lift */
+.card-lift {
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+.card-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(0,0,0,0.08), 0 2px 8px -2px rgba(0,0,0,0.04);
+}
+
+/* Animated number counter */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-count {
+  animation: countUp 0.5s ease-out forwards;
+}
+
+/* Fade slide in */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fadeSlideIn 0.4s ease-out forwards; }
+.animate-fade-in-delay-1 { animation: fadeSlideIn 0.4s ease-out 0.1s forwards; opacity: 0; }
+.animate-fade-in-delay-2 { animation: fadeSlideIn 0.4s ease-out 0.2s forwards; opacity: 0; }
+.animate-fade-in-delay-3 { animation: fadeSlideIn 0.4s ease-out 0.3s forwards; opacity: 0; }

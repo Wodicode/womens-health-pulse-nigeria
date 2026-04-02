@@ -36,7 +36,7 @@ export function Header({ title, subtitle, actions }: HeaderProps) {
         <Search className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
         <input
           type="text"
-          placeholder="Search topics, mentions..."
+          placeholder="Search topics, keywords..."
           className="bg-transparent text-sm text-gray-700 placeholder:text-gray-400 outline-none flex-1"
         />
       </div>
@@ -52,7 +52,7 @@ export function Header({ title, subtitle, actions }: HeaderProps) {
           <Bell className="w-3.5 h-3.5" />
           <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-red-500" />
         </button>
-        <button className="flex items-center gap-1.5 px-3 py-1.5 bg-violet-600 hover:bg-violet-700 text-white text-xs font-medium rounded-lg transition-all">
+        <button className="flex items-center gap-1.5 px-3 py-1.5 bg-[#c8006e] hover:bg-[#a8005c] text-white text-xs font-medium rounded-lg transition-all">
           <Download className="w-3 h-3" />
           Export
         </button>

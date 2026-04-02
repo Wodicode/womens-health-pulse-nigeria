@@ -1,9 +1,15 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Women's Health Pulse Nigeria | RenewHER",
-  description: "Real-time social listening, trend intelligence, and content opportunities for women's health in Nigeria.",
+  title: "RenewHER Women's Health Pulse",
+  description: "Intelligence command centre for women's health in Nigeria. Real-time social listening, trend intelligence, and content strategy for RenewHER.",
+  icons: { icon: '/favicon.png' },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
