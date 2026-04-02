@@ -1,6 +1,5 @@
 'use client';
-import { Bell, Search, Filter, Download, RefreshCw } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { Bell, Search, Download, RefreshCw, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 
 interface HeaderProps {
@@ -14,44 +13,49 @@ export function Header({ title, subtitle, actions }: HeaderProps) {
 
   const handleRefresh = () => {
     setRefreshing(true);
-    setTimeout(() => setRefreshing(false), 1500);
+    setTimeout(() => setRefreshing(false), 1200);
   };
 
   return (
-    <header className="h-16 border-b border-white/8 bg-[#0d0b1a]/80 backdrop-blur-sm flex items-center px-6 gap-4 sticky top-0 z-30">
+    <header className="h-14 border-b border-gray-100 bg-white flex items-center px-6 gap-4 sticky top-0 z-30">
       {/* Title */}
       <div className="flex-1 min-w-0">
-        <h1 className="text-white font-semibold text-lg leading-tight truncate">{title}</h1>
-        {subtitle && <p className="text-white/40 text-xs truncate">{subtitle}</p>}
+        <div className="flex items-center gap-3">
+          <h1 className="text-gray-900 font-semibold text-base truncate">{title}</h1>
+          {subtitle && (
+            <>
+              <span className="text-gray-200 text-sm">/</span>
+              <span className="text-gray-400 text-sm truncate hidden md:block">{subtitle}</span>
+            </>
+          )}
+        </div>
       </div>
 
       {/* Search */}
-      <div className="hidden md:flex items-center gap-2 bg-white/5 border border-white/10 rounded-xl px-3 py-2 w-64">
-        <Search className="w-4 h-4 text-white/30" />
+      <div className="hidden md:flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 w-56">
+        <Search className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
         <input
           type="text"
           placeholder="Search topics, mentions..."
-          className="bg-transparent text-sm text-white/80 placeholder:text-white/30 outline-none flex-1"
+          className="bg-transparent text-sm text-gray-700 placeholder:text-gray-400 outline-none flex-1"
         />
       </div>
 
       {/* Actions */}
       <div className="flex items-center gap-2">
         {actions}
-        <button
-          onClick={handleRefresh}
-          className="w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white/50 hover:text-white/90 transition-all"
-        >
-          <RefreshCw className={`w-4 h-4 ${refreshing ? 'animate-spin' : ''}`} />
+        <button onClick={handleRefresh}
+          className="w-8 h-8 rounded-lg bg-gray-50 hover:bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-all">
+          <RefreshCw className={`w-3.5 h-3.5 ${refreshing ? 'animate-spin' : ''}`} />
         </button>
-        <button className="relative w-9 h-9 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center text-white/50 hover:text-white/90 transition-all">
-          <Bell className="w-4 h-4" />
-          <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500" />
+        <button className="relative w-8 h-8 rounded-lg bg-gray-50 hover:bg-gray-100 border border-gray-200 flex items-center justify-center text-gray-400 hover:text-gray-600 transition-all">
+          <Bell className="w-3.5 h-3.5" />
+          <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-red-500" />
         </button>
-        <Button variant="secondary" size="sm">
-          <Download className="w-3.5 h-3.5" />
+        <button className="flex items-center gap-1.5 px-3 py-1.5 bg-violet-600 hover:bg-violet-700 text-white text-xs font-medium rounded-lg transition-all">
+          <Download className="w-3 h-3" />
           Export
-        </Button>
+        </button>
       </div>
     </header>
   );

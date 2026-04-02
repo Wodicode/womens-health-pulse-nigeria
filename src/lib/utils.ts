@@ -90,10 +90,10 @@ export function severityColor(severity: Severity): string {
 
 export function severityBg(severity: Severity): string {
   const map: Record<Severity, string> = {
-    low: 'bg-emerald-500/10 text-emerald-400',
-    medium: 'bg-amber-500/10 text-amber-400',
-    high: 'bg-orange-500/10 text-orange-400',
-    critical: 'bg-red-500/10 text-red-400',
+    low: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+    medium: 'bg-amber-50 text-amber-700 border-amber-200',
+    high: 'bg-orange-50 text-orange-700 border-orange-200',
+    critical: 'bg-red-50 text-red-700 border-red-200',
   };
   return map[severity];
 }
@@ -109,15 +109,15 @@ export function timeAgo(dateStr: string): string {
 }
 
 export function scoreColor(score: number): string {
-  if (score >= 80) return 'text-emerald-400';
-  if (score >= 60) return 'text-amber-400';
-  if (score >= 40) return 'text-orange-400';
-  return 'text-red-400';
+  if (score >= 80) return 'text-emerald-600';
+  if (score >= 60) return 'text-amber-600';
+  if (score >= 40) return 'text-orange-600';
+  return 'text-red-600';
 }
 
 export function scoreBg(score: number): string {
-  if (score >= 80) return 'bg-emerald-500/10 border-emerald-500/20';
-  if (score >= 60) return 'bg-amber-500/10 border-amber-500/20';
-  if (score >= 40) return 'bg-orange-500/10 border-orange-500/20';
-  return 'bg-red-500/10 border-red-500/20';
+  if (score >= 80) return 'bg-emerald-50 border-emerald-200 text-emerald-700';
+  if (score >= 60) return 'bg-amber-50 border-amber-200 text-amber-700';
+  if (score >= 40) return 'bg-orange-50 border-orange-200 text-orange-700';
+  return 'bg-red-50 border-red-200 text-red-700';
 }
