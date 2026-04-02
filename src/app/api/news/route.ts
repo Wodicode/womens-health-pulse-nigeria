@@ -51,8 +51,8 @@ const GOOGLE_NEWS_SEARCHES = [
 function parseRssItem(item: string, sourceName: string, sourceUrl: string, topic: string, index: number): NewsArticle | null {
   try {
     const title = (
-      item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/s)?.[1] ??
-      item.match(/<title>(.*?)<\/title>/s)?.[1] ??
+      item.match(/<title><!\[CDATA\[([\s\S]*?)\]\]><\/title>/)?.[1] ??
+      item.match(/<title>([\s\S]*?)<\/title>/)?.[1] ??
       ''
     ).trim();
 
@@ -66,8 +66,8 @@ function parseRssItem(item: string, sourceName: string, sourceUrl: string, topic
 
     const pubDate = item.match(/<pubDate>(.*?)<\/pubDate>/)?.[1] ?? '';
     const description = (
-      item.match(/<description><!\[CDATA\[(.*?)\]\]><\/description>/s)?.[1] ??
-      item.match(/<description>(.*?)<\/description>/s)?.[1] ??
+      item.match(/<description><!\[CDATA\[([\s\S]*?)\]\]><\/description>/)?.[1] ??
+      item.match(/<description>([\s\S]*?)<\/description>/)?.[1] ??
       ''
     ).replace(/<[^>]+>/g, '').trim().slice(0, 300);
 
@@ -117,15 +117,15 @@ async function fetchGoogleNewsSearch(search: typeof GOOGLE_NEWS_SEARCHES[0]): Pr
 
     return items.slice(0, 4).map((item, i) => {
       const title = (
-        item.match(/<title><!\[CDATA\[(.*?)\]\]><\/title>/s)?.[1] ??
-        item.match(/<title>(.*?)<\/title>/s)?.[1] ??
+        item.match(/<title><!\[CDATA\[([\s\S]*?)\]\]><\/title>/)?.[1] ??
+        item.match(/<title>([\s\S]*?)<\/title>/)?.[1] ??
         ''
       ).trim();
 
       const link = item.match(/<link>(.*?)<\/link>/)?.[1]?.trim() ?? '';
       const pubDate = item.match(/<pubDate>(.*?)<\/pubDate>/)?.[1] ?? '';
       const sourceName = (
-        item.match(/<source[^>]*>(.*?)<\/source>/s)?.[1] ?? 'Google News'
+        item.match(/<source[^>]*>([\s\S]*?)<\/source>/)?.[1] ?? 'Google News'
       ).trim();
 
       return {

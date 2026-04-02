@@ -335,7 +335,7 @@ export default function DashboardPage() {
                       className="text-gray-800 text-sm font-medium hover:text-violet-700 leading-snug flex-1">
                       {article.title}
                     </a>
-                    <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0 mt-0.5" title="Verified source" />
+                    <CheckCircle className="w-3.5 h-3.5 text-emerald-500 flex-shrink-0 mt-0.5" />
                   </div>
                   <p className="text-gray-500 text-xs leading-relaxed mb-2">{article.summary}</p>
                   <div className="flex items-center gap-3">
